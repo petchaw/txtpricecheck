@@ -11,7 +11,7 @@ def main():
     debug(True)
     run_wsgi_app(bottle.default_app())
 
-
+# This is the section triggered by twilio
 @route('/twilio', method='POST')
 def ProcessSearch():
     UPC = request.POST.get('Body')
