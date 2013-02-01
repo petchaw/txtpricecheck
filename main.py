@@ -15,7 +15,8 @@ def main():
 @route('/twilio', method='POST')
 def ProcessSearch():
     UPC = request.POST.get('Body')
-    url = "https://www.googleapis.com/shopping/search/v1/public/products?key=AIzaSyDhTDNo58Dt8Kx3Ig3eFDxyfKhv2MwvRv8&country=US&restrictBy=gtin:%s&rankBy=price:ascending" % UPC
+    APIKEY = your_api_key               # Google Product Search API Key
+    url = "https://www.googleapis.com/shopping/search/v1/public/products?key=%s&country=US&restrictBy=gtin:%s&rankBy=price:ascending" % (APIKEY, UPC)
     data = urllib.urlopen(url).read()
     d = json.loads(data)
     title = d["items"][0]["product"]["title"]
